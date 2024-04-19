@@ -1,28 +1,11 @@
 import React, {useEffect, useState} from 'react'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+
 import "./card.css"
-import 'react-loading-skeleton/dist/skeleton.css'
 
-const Cards=({movie}) => {
-
-    const[isLoading, setIsLoading] = useState(true)
-
-    useEffect(() => {
-        setTimeout(()=>{
-            setIsLoading(false)
-        }, 1500)
-    }, [])
 
     return <>
     {
-                isLoading
-                ?
-                <div className='cards'>
-                    <SkeletonTheme color="#202020" highlightColor='#444'>
-                        <Skeleton height={300} duration={2}/>
-                    </SkeletonTheme>
-                </div>
-                :
+               
                 <div className='cards'  onClick={() => window.location.href = `/movie/${movie.id}`}>
                     <img className='cards_img' src={`https://image.tmdb.org/t/p/original${movie?movie.poster_path:""}`} width={200} height={300}/>
                     <div className='cards_overlay'>
